@@ -1,0 +1,15 @@
+[
+  {
+    "label": {
+      "en": "Project page",
+      "ja": "プロジェクトページ",
+      "zh": "项目页面"
+    },
+    "url": "https://example.com",
+    "note": {
+      "en": "External source",
+      "ja": "外部リンク",
+      "zh": "外部来源"
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "type": "project",
+  "status": "published",
+  "date": "2026-07-16",
+  "featured": false,
+  "github": "",
+  "title": {
+    "en": "English title",
+    "ja": "日本語タイトル",
+    "zh": "中文标题"
+  },
+  "summary": {
+    "en": "English summary",
+    "ja": "日本語概要",
+    "zh": "中文简介"
+  },
+  "tags": [
+    "Tag 1",
+    "Tag 2"
+  ]
+}
