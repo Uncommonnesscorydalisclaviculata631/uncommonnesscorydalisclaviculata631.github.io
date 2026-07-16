@@ -1,0 +1,58 @@
+{
+  "name": "Reid Chen",
+  "defaultLanguage": "en",
+  "supportedLanguages": [
+    "en",
+    "ja",
+    "zh"
+  ],
+  "role": {
+    "en": "Graphics · Games · AI · Digital Arts",
+    "ja": "グラフィックス・ゲーム・AI・デジタルアート",
+    "zh": "图形学 · 游戏 · 人工智能 · 数字艺术"
+  },
+  "eyebrow": {
+    "en": "Computer Graphics · Games · Artificial Intelligence · Digital Arts",
+    "ja": "コンピュータグラフィックス・ゲーム・人工知能・デジタルアート",
+    "zh": "计算机图形学 · 游戏 · 人工智能 · 数字艺术"
+  },
+  "heroLead": {
+    "en": "I create",
+    "ja": "私は創る",
+    "zh": "我创造"
+  },
+  "heroHighlight": {
+    "en": "intelligent virtual worlds.",
+    "ja": "知性を持つ仮想世界を。",
+    "zh": "具有智能的虚拟世界。"
+  },
+  "heroDescription": {
+    "en": "I am Reid Chen, a graphics and AI developer exploring real-time rendering, interactive systems, generative environments, game logic and visual creation.",
+    "ja": "Reid Chenです。リアルタイムレンダリング、インタラクティブシステム、生成環境、ゲームロジック、ビジュアル表現を探求しています。",
+    "zh": "我是 Reid Chen，一名图形与 AI 开发者，探索实时渲染、交互系统、生成式环境、游戏逻辑与视觉创作。"
+  },
+  "latestTitle": {
+    "en": "Recent projects, artworks and thoughts.",
+    "ja": "最近のプロジェクト、作品と思考。",
+    "zh": "近期项目、艺术作品与思考。"
+  },
+  "aboutTitle": {
+    "en": "Code, systems and visual expression.",
+    "ja": "コード、システム、そして視覚表現。",
+    "zh": "代码、系统与视觉表达。"
+  },
+  "aboutDescription": {
+    "en": "My work connects computer graphics, artificial intelligence, physical simulation and artistic creation.",
+    "ja": "コンピュータグラフィックス、人工知能、物理シミュレーション、芸術制作を横断して活動しています。",
+    "zh": "我的工作连接计算机图形学、人工智能、物理仿真与艺术创作。"
+  },
+  "aboutBody": {
+    "en": "## About\n\nI build virtual environments that are not only visually compelling, but also structured, interactive and physically meaningful.\n\nThis site is generated from independent content folders, allowing projects, articles, images, videos and source links to evolve without changing the page code.",
+    "ja": "## About\n\n視覚的に魅力的であるだけでなく、構造化され、インタラクティブで、物理的意味を持つ仮想環境を制作しています。\n\nこのサイトは独立したコンテンツフォルダから自動生成され、ページコードを変更せずにプロジェクト、記事、画像、動画、出典リンクを更新できます。",
+    "zh": "## 关于我\n\n我构建的不只是视觉上有吸引力的虚拟环境，也希望它们具有明确结构、交互能力与物理意义。\n\n这个网站由相互独立的内容文件夹自动生成，因此项目、文章、图片、视频与来源链接都可以在不修改网页代码的情况下持续更新。"
+  },
+  "social": {
+    "github": "https://github.com/reidch",
+    "email": "mailto:YOUR_EMAIL@example.com"
+  }
+}
