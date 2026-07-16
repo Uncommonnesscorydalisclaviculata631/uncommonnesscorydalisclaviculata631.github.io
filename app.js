@@ -171,10 +171,13 @@ function renderHome() {
       <div class="hero-grid">
         <div>
           <div class="eyebrow"><span class="status-dot"></span>${escapeHtml(localize(data.site.eyebrow))}</div>
-          <h1>${escapeHtml(localize(data.site.heroLead))}<br><span class="gradient-text">${escapeHtml(localize(data.site.heroHighlight))}</span></h1>
+          <h1>
+            <span class="hero-title-lead">${escapeHtml(localize(data.site.heroLead))}</span>
+            <span class="hero-title-highlight gradient-text">${escapeHtml(localize(data.site.heroHighlight))}</span>
+          </h1>
           <p class="hero-description">${escapeHtml(localize(data.site.heroDescription))}</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">${escapeHtml(ui("explore"))} ↘</a>
+            <button class="button button-primary" type="button" data-scroll-to="work">${escapeHtml(ui("explore"))} ↘</button>
             ${github ? `<a class="button button-secondary" href="${attr(github)}" target="_blank" rel="noopener noreferrer">${escapeHtml(ui("viewGithub"))} ↗</a>` : ""}
           </div>
         </div>
@@ -412,6 +415,13 @@ menuButton.addEventListener("click", () => {
 });
 window.addEventListener("hashchange", route);
 document.addEventListener("click", event => {
+  const scrollButton = event.target.closest("[data-scroll-to]");
+  if (scrollButton) {
+    const target = document.getElementById(scrollButton.dataset.scrollTo);
+    if (target) target.scrollIntoView({behavior: "smooth", block: "start"});
+    return;
+  }
+
   const button = event.target.closest("[data-lightbox-src]");
   if (!button) return;
   lightboxImage.src = button.dataset.lightboxSrc;
