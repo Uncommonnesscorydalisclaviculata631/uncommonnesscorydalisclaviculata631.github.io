@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Reid Chen's portfolio featuring computer graphics, game development, artificial intelligence, and digital art."
+  >
+
+  <title>Reid Chen | Graphics, Games & AI</title>
+
+  <style>
+    :root {
+      --background: #050308;
+      --surface: rgba(20, 12, 29, 0.72);
+      --surface-hover: rgba(34, 18, 49, 0.9);
+      --purple: #a855f7;
+      --purple-light: #d8b4fe;
+      --purple-dark: #581c87;
+      --pink: #ec4899;
+      --text: #f5f0fa;
+      --muted: #aaa0b5;
+      --border: rgba(216, 180, 254, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(126, 34, 206, 0.22),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(192, 38, 211, 0.14),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(88, 28, 135, 0.18),
+          transparent 40%
+        ),
+        var(--background);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 42px 42px;
+      mask-image:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.8),
+          transparent 90%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 28px;
+
+      background: rgba(5, 3, 8, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .devil {
+      display: inline-grid;
+      place-items: center;
+
+      width: 36px;
+      height: 36px;
+
+      background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--pink)
+      );
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-light);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      padding: 130px 0 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 24px;
+      padding: 9px 14px;
+
+      color: var(--purple-light);
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(216, 180, 254, 0.16);
+      border-radius: 999px;
+
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      background: var(--purple-light);
+      border-radius: 50%;
+      box-shadow: 0 0 14px var(--purple);
+
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    h1 {
+      max-width: 950px;
+
+      font-size: clamp(54px, 9vw, 116px);
+      font-weight: 760;
+      line-height: 0.93;
+      letter-spacing: -0.07em;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background:
+        linear-gradient(
+          100deg,
+          #ffffff 0%,
+          #d8b4fe 42%,
+          #a855f7 72%,
+          #ec4899 100%
+        );
+
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin-top: 30px;
+
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      min-height: 48px;
+      padding: 0 21px;
+
+      border: 1px solid var(--border);
+      border-radius: 13px;
+
+      font-size: 14px;
+      font-weight: 650;
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      border-color: rgba(216, 180, 254, 0.4);
+    }
+
+    .button-primary {
+      background:
+        linear-gradient(
+          135deg,
+          #7e22ce,
+          #a855f7
+        );
+
+      border-color: rgba(216, 180, 254, 0.35);
+      box-shadow: 0 16px 50px rgba(126, 34, 206, 0.28);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 42px;
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+
+      color: var(--purple-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 700px;
+
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 330px;
+      padding: 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(168, 85, 247, 0.11),
+          rgba(8, 5, 12, 0.92)
+        );
+
+      border: 1px solid var(--border);
+      border-radius: 24px;
+
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+
+      width: 220px;
+      height: 220px;
+
+      background: var(--glow, #7e22ce);
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.22;
+
+      transition: opacity 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(216, 180, 254, 0.38);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(168, 85, 247, 0.17),
+          rgba(8, 5, 12, 0.95)
+        );
+    }
+
+    .project-card:hover::before {
+      opacity: 0.4;
+    }
+
+    .project-icon {
+      position: absolute;
+      top: 27px;
+      left: 27px;
+
+      font-size: 38px;
+    }
+
+    .project-number {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+
+      color: rgba(255, 255, 255, 0.23);
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .project-card h3 {
+      position: relative;
+      z-index: 1;
+
+      margin-bottom: 12px;
+
+      font-size: 28px;
+      letter-spacing: -0.025em;
+    }
+
+    .project-card p {
+      position: relative;
+      z-index: 1;
+
+      max-width: 430px;
+
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .tags {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+
+      color: var(--purple-light);
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(216, 180, 254, 0.12);
+      border-radius: 999px;
+
+      font-size: 11px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 36px 0 50px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+
+      font-size: 13px;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-5px) rotate(3deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.6;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        padding: 18px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .project-grid,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        gap: 26px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 170px;
+      }
+
+      .project-card {
+        min-height: 300px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="logo" href="#">
+      <span class="devil">😈</span>
+      <span>REID CHEN</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="https://github.com/" target="_blank">GitHub</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        Graphics · Games · Artificial Intelligence
+      </div>
+
+      <h1>
+        I create
+        <span class="gradient-text">
+          intelligent virtual worlds.
+        </span>
+      </h1>
+
+      <p class="hero-description">
+        I am Reid Chen, a graphics and AI developer exploring
+        real-time rendering, interactive systems, generative
+        environments, game logic, and digital art.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="button button-primary" href="#work">
+          Explore my work
+          <span>↘</span>
+        </a>
+
+        <a
+          class="button button-secondary"
+          href="https://github.com/"
+          target="_blank"
+        >
+          View GitHub
+          <span>↗</span>
+        </a>
+      </div>
+    </header>
+
+    <section id="work">
+      <div class="section-heading">
+        <p class="section-label">Selected disciplines</p>
+
+        <h2>
+          Where technology meets visual imagination.
+        </h2>
+      </div>
+
+      <div class="project-grid">
+        <article
+          class="project-card"
+          style="--glow: #7c3aed;"
+        >
+          <span class="project-icon">◈</span>
+          <span class="project-number">01</span>
+
+          <h3>Real-Time Rendering</h3>
+
+          <p>
+            Physically based rendering, atmospheric effects,
+            GPU simulation, shaders, and interactive graphics.
+          </p>
+
+          <div class="tags">
+            <span class="tag">OpenGL</span>
+            <span class="tag">GLSL</span>
+            <span class="tag">PBR</span>
+            <span class="tag">GPU</span>
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          style="--glow: #c026d3;"
+        >
+          <span class="project-icon">♟</span>
+          <span class="project-number">02</span>
+
+          <h3>Games & Logic</h3>
+
+          <p>
+            Interactive mechanics, gameplay systems,
+            simulation logic, animation, and virtual experiences.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Gameplay</span>
+            <span class="tag">Systems</span>
+            <span class="tag">XR</span>
+            <span class="tag">Simulation</span>
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          style="--glow: #9333ea;"
+        >
+          <span class="project-icon">✦</span>
+          <span class="project-number">03</span>
+
+          <h3>Generative AI</h3>
+
+          <p>
+            Intelligent pipelines for creating structured,
+            controllable, and physically executable 3D worlds.
+          </p>
+
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Diffusion</span>
+            <span class="tag">3D AI</span>
+            <span class="tag">Agents</span>
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          style="--glow: #db2777;"
+        >
+          <span class="project-icon">✎</span>
+          <span class="project-number">04</span>
+
+          <h3>Digital Art</h3>
+
+          <p>
+            Original illustrations, visual experiments,
+            environment concepts, and personal creative work.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Illustration</span>
+            <span class="tag">Concept Art</span>
+            <span class="tag">Visual Design</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div>
+        <p class="section-label">About me</p>
+
+        <h2>
+          Code, systems and visual expression.
+        </h2>
+      </div>
+
+      <p>
+        My work combines computer graphics, artificial intelligence,
+        physical simulation and artistic creation. I am particularly
+        interested in building virtual environments that are not only
+        visually compelling, but also structured, interactive and
+        physically meaningful.
+      </p>
+    </section>
+
+    <footer>
+      <span>© 2026 Reid Chen</span>
+      <span>Designed with code and a little devilish energy 😈</span>
+    </footer>
+  </main>
+</body>
+</html>
